@@ -1,0 +1,42 @@
+<?php foreach ($rows as $key => $group) : ?>
+    <div class="uk-photos-day-wrapper">
+        <?php foreach ($group as $n => $row) : ?>
+            <div class="uk-photos-date-header"><?= $row->changed->isoFormat('LL') ?></div>
+            <div class="uk-photos-image-wrapper">
+                <?= $row->media->displayImage(200, 200, 'crop', []) ?>
+                <a href="<?= $row->media->url() ?>">
+                    <span class="wt-icon-preferences uk-photos-edit-icon"></span>
+                </a>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endforeach ?>
+<style>
+    .uk-photos-day-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .uk-photos-date-header {
+        display: none;
+    }
+
+    .uk-photos-date-header:first-child {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .uk-photos-image-wrapper {
+        display: inline-block;
+        position: relative;
+    }
+
+    .uk-photos-edit-icon {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: rgba(255, 255, 255, .7);
+        padding: 2px;
+        border-radius: 4px;
+    }
+</style>
