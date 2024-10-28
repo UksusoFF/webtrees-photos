@@ -65,6 +65,15 @@ class PhotosModule extends AbstractModule implements ModuleCustomInterface, Modu
         return self::CUSTOM_WEBSITE;
     }
 
+    public function customTranslations(string $language): array
+    {
+        $file = $this->resourcesFolder() . "langs/{$language}.php";
+
+        return file_exists($file)
+            ? require $file
+            : require $this->resourcesFolder() . 'langs/en.php';
+    }
+
     public function resourcesFolder(): string
     {
         return __DIR__ . '/../../resources/';
