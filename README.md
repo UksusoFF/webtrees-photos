@@ -8,7 +8,7 @@ This module provides block which show latest uploaded photos.
 ## System requirements
 Same as [webtrees#system-requirements](https://github.com/fisharebest/webtrees#system-requirements).
 
-Works with 2.1.11 version and bundled themes.
+Works with 2.1.x and 2.2.x version and bundled themes.
 
 ## Installation
 1. Make a backup of the database

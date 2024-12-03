@@ -22,7 +22,7 @@ class PhotosModule extends AbstractModule implements ModuleCustomInterface, Modu
     use ModuleCustomTrait;
     use ModuleBlockTrait;
 
-    public const CUSTOM_VERSION = '0.0.1';
+    public const CUSTOM_VERSION = '0.0.2';
 
     public const CUSTOM_WEBSITE = 'https://github.com/UksusoFF/webtrees-photos';
 
@@ -125,7 +125,7 @@ class PhotosModule extends AbstractModule implements ModuleCustomInterface, Modu
             ->map(function(object $row) use ($tree): object {
                 $media = Registry::mediaFactory()->make($row->m_id, $tree);
 
-                return (object)[
+                return (object) [
                     'media' => $media,
                     'changed' => Registry::timestampFactory()->fromString($row->change_time),
                 ];
@@ -134,8 +134,6 @@ class PhotosModule extends AbstractModule implements ModuleCustomInterface, Modu
                 return $row->media instanceof Media && $row->media->canShow() && $row->media->firstImageFile() !== null;
             })
             ->groupBy(static function(object $row): string {
-                assert($row->changed instanceof TimestampInterface);
-
                 return $row->changed->format('Y-m-d');
             });
     }
